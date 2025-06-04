@@ -22,5 +22,11 @@ SELECT nombre FROM productos WHERE categoria = 'Electrónica' ORDER BY nombre AS
 --6. Muestra los detalles de los pedidos que están en estado "Pendiente", incluyendo el ID del pedido, el ID del cliente y la fecha del pedido.
 SELECT pedido_id, cliente_id, fecha_pedido FROM pedidos WHERE estado = 'Pendiente';
 
+--7. Encuentra el nombre y el precio del producto más caro en la base de datos.
+SELECT nombre, precio FROM productos
+ORDER BY precio DESC
+LIMIT 1;
+
+
 
 
