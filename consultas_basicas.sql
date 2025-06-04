@@ -39,3 +39,6 @@ SELECT categoria, COUNT(*) FROM productos GROUP BY categoria;
 --11. Obtén una lista de productos con un precio mayor a $75 USD, mostrando solo el nombre, el precio y su respectivo precio en USD.
 SELECT nombre, precio /4000 FROM productos 
 WHERE (precio/4000) > 75;
+
+--12. Lista todos los proveedores registrados.
+SELECT * FROM proveedores;
