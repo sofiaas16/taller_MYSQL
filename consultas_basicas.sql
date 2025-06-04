@@ -27,6 +27,10 @@ SELECT nombre, precio FROM productos
 ORDER BY precio DESC
 LIMIT 1;
 
+--8. Obtén el total de pedidos realizados por cada cliente, mostrando el ID del cliente y el total de pedidos.
+SELECT cliente_id, COUNT(*) FROM pedidos GROUP BY cliente_id
+
+
 
 
 
