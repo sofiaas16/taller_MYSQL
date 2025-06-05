@@ -87,3 +87,12 @@ ON productos.producto_id = proveedores_productos.producto_id
 JOIN proveedores
 ON proveedores.proveedor_id = proveedores_productos.proveedor_id
 WHERE proveedores.nombre = 'Tech Supplies S.A.';
+
+--13. Lista los proveedores que no están asociados a ningún producto (es decir, que aún no suministran).
+SELECT proveedores.nombre
+FROM proveedores
+LEFT JOIN proveedores_productos 
+ON proveedores.proveedor_id = proveedores_productos.proveedor_id
+WHERE producto_id IS NULL ;
+
+--14. Contar cuántos proveedores tiene cada producto.
