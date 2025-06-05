@@ -1,4 +1,4 @@
--- Active: 1749075873268@@127.0.0.1@3307@MYSQL_TALLER
+-- Active: 1748438046331@@127.0.0.1@3307@MYSQL_taller
 
 --1. Encuentra los nombres de los clientes y los detalles de sus pedidos.
 SELECT usuarios.nombre, detalles_pedidos.pedido_id, detalles_pedidos.producto_id 
@@ -69,3 +69,12 @@ SELECT usuarios.nombre AS nombre, pedidos.pedido_id AS pedidos
 FROM usuarios
 LEFT JOIN pedidos
 ON usuarios.usuario_id = pedidos.pedido_id;
+
+--11. Listar todos los proveedores que suministran un determinado producto.
+SELECT proveedores.nombre AS proveedoresNombre, productos.nombre AS productosNombre
+FROM proveedores 
+JOIN proveedores_productos 
+ON proveedores.proveedor_id = proveedores_productos.proveedor_id
+JOIN productos
+ON productos.producto_id = proveedores_productos.producto_id
+WHERE productos.nombre = 'Televisor';
