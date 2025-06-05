@@ -1,4 +1,4 @@
--- Active: 1749052079316@@127.0.0.1@3307@talle_MYSQL
+-- Active: 1749075873268@@127.0.0.1@3307@MYSQL_TALLER
 
 --1. Encuentra los nombres de los clientes y los detalles de sus pedidos.
 SELECT usuarios.nombre, detalles_pedidos.pedido_id, detalles_pedidos.producto_id 
@@ -20,3 +20,28 @@ INNER JOIN usuarios AS c ON p.cliente_id = c.usuario_id
 INNER JOIN empleados AS emp ON p.empleado_id = emp.empleado_id
 INNER JOIN usuarios AS e ON emp.usuario_id = e.usuario_id
 
+--4. Muestra todos los pedidos y, si existen, los productos en cada pedido, incluyendo los pedidos sin productos usando `LEFT JOIN`
+SELECT productos.nombre AS ProductoNom, pedidos.cliente_id AS Cliente_id, pedidos.empleado_id AS Empleado_id,
+detalles_pedidos.cantidad AS CantidadPedidos, pedidos.fecha_pedido AS FechaPedido, pedidos.estado AS EstadoPedidos
+FROM pedidos
+LEFT JOIN detalles_pedidos
+ON pedidos.pedido_id = detalles_pedidos.pedido_id
+LEFT JOIN productos
+ON detalles_pedidos.producto_id = productos.producto_id;
+
+--5. Encuentra los productos y, si existen, los detalles de pedidos en los que no se ha incluido el producto usando `RIGHT JOIN`.
+SELECT productos.producto_id, productos.nombre AS nombre, productos.precio AS precio, 
+detalles_pedidos.cantidad AS cantidad, detalles_pedidos.detalle_id AS detallePedido_id
+FROM detalles_pedidos
+RIGHT JOIN productos
+ON detalles_pedidos.producto_id = productos.producto_id;
+
+--6. Lista todos los empleados junto con los pedidos que han gestionado, si existen, usando `LEFT JOIN` para ver los empleados sin pedidos.
+SELECT empleados.empleado_id, empleados.puesto AS puesto, empleados.fecha_contratacion AS contratacion,
+empleados.salario AS salario, pedidos.fecha_pedido AS fecha, pedidos.estado AS estado
+FROM empleados
+LEFT JOIN pedidos
+ON empleados.empleado_id = pedidos.empleado_id;
+
+--7. Encuentra los empleados que no han gestionado ningún pedido usando un `LEFT JOIN` combinado con `WHERE`.
+SELECT empleados.empleado_id, empleados.puesto,
