@@ -122,6 +122,19 @@ WHERE p2.producto_id = 2;
 
 
 --17. Cuenta cuántos proveedores tiene cada producto, listando `producto_id`, `nombre` y `cantidad_proveedores`.
-SELECT 
-FROM 
-JOIN 
+SELECT p.producto_id, p.nombre, COUNT(pv.proveedor_id) AS 'Cantidad Proveedores'
+FROM productos p
+JOIN proveedores_productos pp
+ON pp.producto_id = p.producto_id
+JOIN proveedores pv
+ON pv.proveedor_id = pp.proveedor_id
+GROUP BY p.producto_id;
+
+--18. Cuenta cuántos productos suministra cada proveedor, mostrando `proveedor_id`, `nombre_proveedor` y `total_productos`.
+SELECT p.proveedor_id, p.nombre, COUNT(pr.producto_id) AS 'Producto ID'
+FROM proveedores p
+JOIN proveedores_productos pp
+ON pp.proveedor_id = p.proveedor_id
+JOIN productos pr
+ON pr.producto_id = pp.producto_id
+GROUP BY p.proveedor_id;
