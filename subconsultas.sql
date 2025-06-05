@@ -19,3 +19,10 @@ WHERE p.producto_id NOT IN  (
       
     )
 
+--3. Lista los empleados que han gestionado pedidos en los últimos 6 meses.
+SELECT emp.empleado_id
+FROM empleados emp
+WHERE emp.empleado_id IN (
+    SELECT us.
+    FROM usuarios us
+)
