@@ -1,4 +1,4 @@
--- Active: 1748438046331@@127.0.0.1@3307@MYSQL_taller
+-- Active: 1749153997759@@127.0.0.1@3307@Taller_MYSQL
 
 --1. Encuentra los nombres de los clientes y los detalles de sus pedidos.
 SELECT usuarios.nombre, detalles_pedidos.pedido_id, detalles_pedidos.producto_id 
@@ -103,3 +103,25 @@ ON proveedores.proveedor_id = proveedores_productos.proveedor_id
 LEFT JOIN productos
 ON productos.producto_id = proveedores_productos.producto_id
 GROUP BY productos.nombre;
+
+--15. Para un proveedor determinado (p. ej. `proveedor_id = 3`), muestra el nombre de todos los productos que suministra.
+SELECT productos.nombre, COUNT(proveedores_productos.proveedor_id) 
+FROM productos
+JOIN proveedores_productos
+ON productos.producto_id = proveedores_productos.producto_id
+GROUP BY productos.nombre;
+
+--16. Para un producto específico (p. ej. `producto_id = 1`), muestra todos los proveedores que lo distribuyen, con sus datos de contacto.
+SELECT p2.producto_id,  p2.nombre, p.*
+FROM proveedores p
+JOIN proveedores_productos pp 
+ON pp.proveedor_id = p.proveedor_id
+JOIN productos p2
+ON p2.producto_id = pp.producto_id 
+WHERE p2.producto_id = 2;
+
+
+--17. Cuenta cuántos proveedores tiene cada producto, listando `producto_id`, `nombre` y `cantidad_proveedores`.
+SELECT 
+FROM 
+JOIN 

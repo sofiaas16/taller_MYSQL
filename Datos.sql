@@ -1,4 +1,4 @@
--- Active: 1749123745144@@127.0.0.1@3307@MYSQL_taller
+-- Active: 1749153997759@@127.0.0.1@3307@Taller_MYSQL
 ALTER TABLE nombre_tabla AUTO_INCREMENT = 1;
 
 INSERT INTO tipos_usuarios(nombre) VALUES ('Cliente'), ('Empleado');
