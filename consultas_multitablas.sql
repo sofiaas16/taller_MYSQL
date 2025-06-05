@@ -50,3 +50,12 @@ FROM empleados
 LEFT JOIN pedidos
 ON empleados.empleado_id = pedidos.empleado_id
 WHERE pedidos.fecha_pedido IS NULL AND pedidos.estado IS NULL;
+
+--8. Calcula el total gastado en cada pedido, mostrando el ID del pedido y el total, usando `JOIN`.
+SELECT p.pedido_id, 
+    SUM(dp.precio_unitario * dp.cantidad) AS Total
+FROM pedidos AS p
+JOIN detalles_pedidos AS dp ON p.pedido_id = dp.pedido_id
+GROUP BY p.pedido_id;
+
+--9. Realiza un `CROSS JOIN` entre clientes y productos para mostrar todas las combinaciones posibles de clientes y productos.
