@@ -59,3 +59,13 @@ JOIN detalles_pedidos AS dp ON p.pedido_id = dp.pedido_id
 GROUP BY p.pedido_id;
 
 --9. Realiza un `CROSS JOIN` entre clientes y productos para mostrar todas las combinaciones posibles de clientes y productos.
+SELECT *
+FROM usuarios 
+CROSS JOIN productos;
+
+--10. Encuentra los nombres de los clientes y los productos que han comprado, si existen, 
+--incluyendo los clientes que no han realizado pedidos usando `LEFT JOIN`.
+SELECT usuarios.nombre AS nombre, pedidos.pedido_id AS pedidos
+FROM usuarios
+LEFT JOIN pedidos
+ON usuarios.usuario_id = pedidos.pedido_id;
