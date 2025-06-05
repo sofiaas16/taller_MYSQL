@@ -96,3 +96,10 @@ ON proveedores.proveedor_id = proveedores_productos.proveedor_id
 WHERE producto_id IS NULL ;
 
 --14. Contar cuántos proveedores tiene cada producto.
+SELECT COUNT(proveedores.nombre) AS proveedoresNom, productos.nombre
+FROM proveedores
+LEFT JOIN proveedores_productos
+ON proveedores.proveedor_id = proveedores_productos.proveedor_id
+LEFT JOIN productos
+ON productos.producto_id = proveedores_productos.producto_id
+GROUP BY productos.nombre;
