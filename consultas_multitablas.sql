@@ -78,3 +78,12 @@ ON proveedores.proveedor_id = proveedores_productos.proveedor_id
 JOIN productos
 ON productos.producto_id = proveedores_productos.producto_id
 WHERE productos.nombre = 'Televisor';
+
+--12. Obtener todos los productos que ofrece un proveedor específico.
+SELECT productos.nombre, proveedores.nombre
+FROM productos
+JOIN proveedores_productos
+ON productos.producto_id = proveedores_productos.producto_id
+JOIN proveedores
+ON proveedores.proveedor_id = proveedores_productos.proveedor_id
+WHERE proveedores.nombre = 'Tech Supplies S.A.';
